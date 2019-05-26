@@ -1,6 +1,6 @@
 spring:
   data:
     mongodb:
-      host: thingydb
-      port: 27017
-      database: thingy
+      host: ${DATABASE_HOST}
+      port: ${DATABASE_PORT}
+      database: ${DATABASE_NAME}

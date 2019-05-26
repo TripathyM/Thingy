@@ -1,14 +1,19 @@
 version: "3"
 services:
-  thingydb:
-    image: mongo:3.2.4
-    container_name: "mongo"
-    ports:
-      - 27017:27017
-    command: --smallfiles
   app:
     image: com.todo/thingy
     ports:
       - 8080:8080
+    environment:
+      - DATABASE_HOST=thingydb
+      - DATABASE_PORT=27017
+      - DATABASE_NAME=thingy
     links:
       - thingydb
+  thingydb:
+    image: mongo:3.2.4
+    container_name: "mongo"
+    ports:
+      # Map to localhost:27018 instead of 27017 in case there is a local mongo instance running. In the application you still can access 27017 of thingydb service
+      - 27018:27017
+    command: --smallfiles
