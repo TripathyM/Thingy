@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @MockitoSettings
@@ -36,5 +37,15 @@ class TodoServiceTest {
 
     final List<Todo> allTodos = todoService.getAllTodos();
     assertThat(allTodos).isEqualTo(todos);
+  }
+
+  @Test
+  void shouldPopulateIdFieldOfTodoAndSave() {
+    Todo todo = new Todo();
+
+    todoService.createTodo(todo);
+
+    assertThat(todo.get_id()).isNotNull();
+    verify(todoRepository).save(todo);
   }
 }
