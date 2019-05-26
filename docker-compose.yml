@@ -1,8 +1,8 @@
 version: "3"
 services:
-  mymongo:
+  thingydb:
     image: mongo:3.2.4
-    container_name: "mymongo"
+    container_name: "mongo"
     ports:
       - 27017:27017
     command: --smallfiles
@@ -11,4 +11,4 @@ services:
     ports:
       - 8080:8080
     links:
-      - mymongo
+      - thingydb
