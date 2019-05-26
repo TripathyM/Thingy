@@ -9,7 +9,7 @@ apply plugin: 'com.palantir.docker'
 
 group = 'com.todo'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '12'
 
 bootJar {
     baseName = 'thingy'
@@ -37,6 +37,8 @@ dependencies {
         exclude group: "junit"
     }
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.2'
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '2.23.4'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.12.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.2'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.4.2'
 }
