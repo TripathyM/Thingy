@@ -1,7 +1,7 @@
 package com.thingy.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.thingy.model.Todo;
+import com.thingy.entity.Todo;
 import com.thingy.service.TodoService;
 import org.bson.types.ObjectId;
 import org.junit.jupiter.api.DisplayName;
@@ -68,7 +68,7 @@ class TodoControllerTest {
 
   private Todo createTodo(String title, String description) {
     Todo todo = new Todo();
-    todo.set_id(ObjectId.get());
+    todo.setId(ObjectId.get());
     todo.setTitle(title);
     todo.setDescription(description);
 

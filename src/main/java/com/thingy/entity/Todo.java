@@ -1,4 +1,4 @@
-package com.thingy.model;
+package com.thingy.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,13 +11,13 @@ import org.springframework.data.annotation.Id;
 @Data
 public class Todo {
   @Id
-  private ObjectId _id;
+  private ObjectId id;
 
   private String title;
   private String description;
   private boolean completed;
 
-  public String get_id() {
-    return _id.toHexString();
+  public String getId() {
+    return id.toHexString();
   }
 }

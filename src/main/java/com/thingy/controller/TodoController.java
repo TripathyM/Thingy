@@ -1,6 +1,6 @@
 package com.thingy.controller;
 
-import com.thingy.model.Todo;
+import com.thingy.entity.Todo;
 import com.thingy.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

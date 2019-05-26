@@ -1,6 +1,6 @@
 package com.thingy.service;
 
-import com.thingy.model.Todo;
+import com.thingy.entity.Todo;
 import com.thingy.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
@@ -18,7 +18,7 @@ public class TodoService {
   }
 
   public Todo createTodo(Todo todo) {
-    todo.set_id(ObjectId.get());
+    todo.setId(ObjectId.get());
     todoRepository.save(todo);
 
     return todo;

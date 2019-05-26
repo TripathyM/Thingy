@@ -1,6 +1,6 @@
 package com.thingy.service;
 
-import com.thingy.model.Todo;
+import com.thingy.entity.Todo;
 import com.thingy.repository.TodoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -45,7 +45,7 @@ class TodoServiceTest {
 
     todoService.createTodo(todo);
 
-    assertThat(todo.get_id()).isNotNull();
+    assertThat(todo.getId()).isNotNull();
     verify(todoRepository).save(todo);
   }
 }
