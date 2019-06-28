@@ -9,7 +9,7 @@ apply plugin: 'com.palantir.docker'
 
 group = 'com.todo'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '12'
+sourceCompatibility = '11'
 
 bootJar {
     baseName = 'thingy'
