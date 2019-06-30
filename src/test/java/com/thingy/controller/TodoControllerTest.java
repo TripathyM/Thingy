@@ -14,8 +14,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -64,6 +66,18 @@ class TodoControllerTest {
             .andExpect(jsonPath("$.description").value("Hello todo"));
 
     verify(todoService).createTodo(todo);
+  }
+
+  @Test
+  @DisplayName("should delete todo using todoId")
+  void shouldDeleteTodo() throws Exception {
+    Todo todo = createTodo("test", "test todo");
+    String todoId = todo.getId();
+    mockMvc.perform(delete("/todos/" + todoId)
+    .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk());
+
+    verify(todoService).deleteTodo(todoId);
   }
 
   private Todo createTodo(String title, String description) {

@@ -48,4 +48,15 @@ class TodoServiceTest {
     assertThat(todo.getId()).isNotNull();
     verify(todoRepository).save(todo);
   }
+
+  @Test
+  @DisplayName("should delete todo by using todoId")
+  void shouldDeleteTodoByTodoId() {
+    Todo todo1 = new Todo();
+
+    todoService.createTodo(todo1);
+    todoService.deleteTodo(todo1.getId());
+
+    verify(todoRepository).deleteById(todo1.getId());
+  }
 }
