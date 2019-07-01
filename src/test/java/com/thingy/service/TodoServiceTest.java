@@ -53,8 +53,8 @@ class TodoServiceTest {
   @Test
   void shouldUpdateTodo() {
     Todo updatedTodo = new Todo();
-        updatedTodo.setTitle("updated todo");
-        updatedTodo.setDescription("updated todo description");
+    updatedTodo.setTitle("updated todo");
+    updatedTodo.setDescription("updated todo description");
 
     when(todoRepository.save(any(Todo.class))).thenReturn(updatedTodo);
 

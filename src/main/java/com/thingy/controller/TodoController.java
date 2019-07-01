@@ -34,14 +34,14 @@ public class TodoController {
   }
 
   @PutMapping(value = "/{todoId}")
-  public Todo updateTodo(@RequestBody Todo updatedTodo, @PathVariable String todoId){
+  public Todo updateTodo(@RequestBody Todo updatedTodo, @PathVariable String todoId) {
     Todo todo = service.updateTodo(updatedTodo);
     System.out.println(todo);
     return todo;
   }
 
   @DeleteMapping(value = "/{todoId}")
-  public void deleteTodo(@PathVariable String todoId){
+  public void deleteTodo(@PathVariable String todoId) {
     service.deleteTodo(todoId);
   }
 
