@@ -7,7 +7,6 @@ import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,5 +26,9 @@ public class TodoService {
 
   public void deleteTodo(String todoId) {
     todoRepository.deleteById(todoId);
+  }
+
+  public Todo updateTodo(Todo updatedTodo) {
+    return todoRepository.save(updatedTodo);
   }
 }

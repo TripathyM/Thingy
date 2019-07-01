@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -20,7 +21,7 @@ class TodoServiceTest {
   @Mock
   TodoRepository todoRepository;
 
-  TodoService todoService;
+  private TodoService todoService;
 
   @BeforeEach
   void setUp() {
@@ -47,6 +48,22 @@ class TodoServiceTest {
 
     assertThat(todo.getId()).isNotNull();
     verify(todoRepository).save(todo);
+  }
+
+  @Test
+  void shouldUpdateTodo() {
+    Todo updatedTodo = new Todo();
+        updatedTodo.setTitle("updated todo");
+        updatedTodo.setDescription("updated todo description");
+
+    when(todoRepository.save(any(Todo.class))).thenReturn(updatedTodo);
+
+    Todo actualUpdatedTodo = todoService.updateTodo(updatedTodo);
+
+    assertThat(actualUpdatedTodo.getDescription()).isEqualTo(updatedTodo.getDescription());
+    assertThat(actualUpdatedTodo.getTitle()).isEqualTo(updatedTodo.getTitle());
+
+    verify(todoRepository).save(updatedTodo);
   }
 
   @Test
