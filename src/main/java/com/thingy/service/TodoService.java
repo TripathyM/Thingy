@@ -23,4 +23,12 @@ public class TodoService {
 
     return todo;
   }
+
+  public void deleteTodo(String todoId) {
+    todoRepository.deleteById(todoId);
+  }
+
+  public Todo updateTodo(Todo updatedTodo) {
+    return todoRepository.save(updatedTodo);
+  }
 }
